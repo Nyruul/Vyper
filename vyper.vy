@@ -10,14 +10,16 @@ struct Pokemon:
     matches: uint256
     wins: uint256
 
+totalPokemonCount: public(uint256)
 pokemonList: HashMap[uint256, Pokemon]
 
-@external
-def createPokemon(name: String[32], dna: uint256, HP: uint256):
-    self.pokemonList[0] = Pokemon({
-        name: name,
-        dna: dna,
-        HP: HP,
+@internal
+def _createPokemon(_name: String[32], _dna: uint256, _HP: uint256):
+    self.pokemonList[self.totalPokemonCount] = Pokemon({
+        name: _name,
+        dna: _dna,
+        HP: _HP,
         matches: 0,
         wins: 0
     })
+    self.totalPokemonCount += 1
