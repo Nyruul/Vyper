@@ -13,6 +13,8 @@ struct Pokemon:
 totalPokemonCount: public(uint256)
 pokemonList: HashMap[uint256, Pokemon]
 
+# Your code here
+
 @internal
 def _createPokemon(_name: String[32], _dna: uint256, _HP: uint256):
     self.pokemonList[self.totalPokemonCount] = Pokemon({
